@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/auth.css">
+    <script src="../../static/js/auth.js" defer></script>
+</head>
+<body>
+    <!-- <<<<<<< HEAD -->
+       <div class="zipai-header" role="banner">
+    <div class="header-utility">
+      <div class="common-container utility-inner">
+        <div class="utility-message">
+          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          <span>안심할 수 있는 부동산 거래, ZipAI가 함께합니다.</span>
+        </div>
+        <div class="utility-links">
+          <a href="#">공지사항</a>
+          <a href="../../templates/board/customer-center.html">고객센터</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="common-container header-inner">
+        <a class="header-logo" href="../../index.html" aria-label="ZipAI 홈으로 이동">
+          <span class="header-logo-mark" aria-hidden="true"><i class="fa-solid fa-house"></i></span>
+          <span class="header-logo-copy"><strong>ZipAI</strong><small>집을 아는 가장 쉬운 방법</small></span>
+        </a>
+
+        <button class="mobile-menu-button" type="button" aria-label="전체 메뉴 열기" aria-expanded="false" aria-controls="primaryMenu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <div class="header-menu" id="primaryMenu" role="navigation" aria-label="주요 메뉴">
+          <div class="menu-links">
+            <a href="../../index.html">매물 찾기</a>
+            <a href="../../templates/defense/fraud_result.html">사기방지</a>
+            <a href="../../templates/safe/safety.html">위험안전도</a>
+            <a href="../../templates/board/trend1.html">금융지원정책</a>
+            <a href="../../templates/board/happy-housing.html">행복주택</a>
+            <a href="../../templates/ai/lifestyle-analysis.html">방 구하기·내놓기</a>
+          </div>
+          <div class="header-actions">
+            <button class="icon-button" type="button" aria-label="검색">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+            <a class="login-button" href="../../templates/member/login.html">
+              <i class="fa-solid fa-user" aria-hidden="true"></i>
+              로그인
+            </a>
+            <a class="listing-button" href="#">
+              <i class="fa-solid fa-house-circle-check" aria-hidden="true"></i>
+              매물 등록
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="header-preview">
+    <div class="common-container preview-inner">
+      <span>ZIPAI UI COMPONENT</span>
+      <h1>좋은 집을 찾는 첫걸음</h1>
+      <p>안전한 매물 탐색부터 계약 준비까지 한곳에서 확인하세요.</p>
+    </div>
+  </div>
+
+  <script>
+    const menuButton = document.querySelector('.mobile-menu-button');
+    const headerMenu = document.querySelector('.header-menu');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = headerMenu.classList.toggle('is-open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? '전체 메뉴 닫기' : '전체 메뉴 열기');
+      menuButton.querySelector('i').className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    });
+  </script>
+</body>
+</html>

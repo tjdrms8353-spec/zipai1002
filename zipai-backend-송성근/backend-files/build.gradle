@@ -1,0 +1,76 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.5.4'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.zipai'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-mysql'
+    implementation 'org.bouncycastle:bcprov-jdk18on:1.81'
+    implementation 'org.apache.pdfbox:pdfbox:3.0.5'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    runtimeOnly 'com.h2database:h2'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testRuntimeOnly 'com.h2database:h2'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// This copied Windows workspace contains Korean characters and punctuation in its path.
+// Full compilation avoids Gradle's incremental compiler losing sibling packages in this path.
+tasks.withType(JavaCompile).configureEach {
+    options.incremental = false
+}
+
+tasks.named('processResources') {
+    from('index.html') { into 'static' }
+    from('sub3.html') { into 'static' }
+    from('static') { into 'static/static' }
+    from('templates') { into 'static/templates' }
+    from('templates') { into 'templates' }
+}
+
+tasks.register('resetAdminPassword', JavaExec) {
+    group = 'administration'
+    description = 'Reset an application administrator password using DB_* environment variables.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.zipai.tools.ResetAdminPassword'
+}
+
+tasks.register('listAdminAccounts', JavaExec) {
+    group = 'administration'
+    description = 'List application administrator accounts without modifying the database.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.zipai.tools.ListAdminAccounts'
+}
+
+tasks.register('createAdminAccount', JavaExec) {
+    group = 'administration'
+    description = 'Create a new active application administrator account.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.zipai.tools.CreateAdminAccount'
+}

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ZipAI 위험도 분석 결과 페이지">
+  <title>ZipAI | 위험도 분석</title>
+  <link rel="icon" type="image/svg+xml" href="../static/images/favicon.svg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../static/css/common.css">
+  <link rel="stylesheet" href="../../static/css/header.css">
+  <link rel="stylesheet" href="../../static/css/footer.css">
+  <link rel="stylesheet" href="../../static/css/safe.css">
+</head>
+<body>
+  <div id="top" class="zipai-page">
+    <!-- <header class="zipai-header">
+      <nav class="zipai-container zipai-nav" aria-label="ZipAI 주요 메뉴">
+        <a class="zipai-brand" href="#top" aria-label="ZipAI 홈">
+          <span class="zipai-brand-mark"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+          <span>ZipAI</span>
+        </a>
+
+        <ul class="zipai-menu">
+          <li><a href="#"><i class="fa-solid fa-house" aria-hidden="true"></i> 매물</a></li>
+          <li><a class="is-active" href="safety_search.html"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> 안전도</a></li>
+          <li><a href="#"><i class="fa-solid fa-file-signature" aria-hidden="true"></i> 전세사기 예방</a></li>
+          <li><a href="#"><i class="fa-solid fa-star" aria-hidden="true"></i> 관심매물</a></li>
+        </ul>
+
+        <div class="zipai-header-actions">
+          <a class="zipai-btn zipai-btn-primary" href="safety_search.html#safety-search">
+            <i class="fa-solid fa-magnifying-glass-location" aria-hidden="true"></i>
+            안전도 검색
+          </a>
+          <button class="zipai-mobile-toggle" type="button" aria-label="모바일 메뉴">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+      </nav>
+    </header> -->
+
+    <main>
+      <section class="safety-hero">
+        <div class="zipai-container">
+          <span class="safety-eyebrow"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> 위험도 분석</span>
+          <h1>지역별 위험 신호를 점수로 비교하세요</h1>
+          <p>검색한 위치의 안전점수, 범죄 주의구간, 여성 밤길, 치안시설, 비상벨·CCTV 지표를 한눈에 확인할 수 있습니다.</p>
+        </div>
+      </section>
+
+      <section class="zipai-container" aria-label="안전도 분석 결과">
+        <div class="zipai-card safety-result">
+          <h2>분석 결과</h2>
+          <div class="safety-score-row">
+            <div class="safety-score-ring" aria-label="안전점수 87점">
+              <div>
+                <strong>87</strong>
+                <span>점</span>
+              </div>
+            </div>
+            <div class="safety-score-copy">
+              <strong>안전 우수</strong>
+              <p>주요 치안시설 접근성이 좋고 비상벨·CCTV 밀도가 높은 편입니다.</p>
+            </div>
+          </div>
+
+          <div class="safety-metrics">
+            <div class="safety-meter">
+              <span>지역안전</span>
+              <span class="safety-meter-bar"><span class="safety-meter-fill" style="--value: 92%; --tone: var(--zipai-safe);"></span></span>
+              <strong>92</strong>
+            </div>
+            <div class="safety-meter">
+              <span>범죄 주의구간</span>
+              <span class="safety-meter-bar"><span class="safety-meter-fill" style="--value: 71%; --tone: var(--zipai-warning);"></span></span>
+              <strong>71</strong>
+            </div>
+            <div class="safety-meter">
+              <span>여성 밤길</span>
+              <span class="safety-meter-bar"><span class="safety-meter-fill" style="--value: 84%; --tone: var(--zipai-primary);"></span></span>
+              <strong>84</strong>
+            </div>
+            <div class="safety-meter">
+              <span>치안시설</span>
+              <span class="safety-meter-bar"><span class="safety-meter-fill" style="--value: 89%; --tone: var(--zipai-safe);"></span></span>
+              <strong>89</strong>
+            </div>
+            <div class="safety-meter">
+              <span>비상벨·CCTV</span>
+              <span class="safety-meter-bar"><span class="safety-meter-fill" style="--value: 82%; --tone: var(--zipai-primary);"></span></span>
+              <strong>82</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="zipai-container safety-layer-list" aria-label="안전도 상세 지표">
+        <article class="zipai-card safety-layer-card">
+          <span class="safety-layer-icon"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i></span>
+          <h2>지역안전</h2>
+          <p>주거 밀도, 주변 시설, 야간 유동 인구를 반영한 생활권 안전 지표입니다.</p>
+        </article>
+        <article class="zipai-card safety-layer-card">
+          <span class="safety-layer-icon"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></span>
+          <h2>범죄 주의구간</h2>
+          <p>최근 신고 경향과 취약 구간을 기반으로 주의가 필요한 위치를 표시합니다.</p>
+        </article>
+        <article class="zipai-card safety-layer-card">
+          <span class="safety-layer-icon"><i class="fa-solid fa-person-walking" aria-hidden="true"></i></span>
+          <h2>여성 밤길</h2>
+          <p>가로등, CCTV, 치안시설 접근성을 함께 고려한 야간 보행 안전도입니다.</p>
+        </article>
+        <article class="zipai-card safety-layer-card">
+          <span class="safety-layer-icon"><i class="fa-solid fa-building-shield" aria-hidden="true"></i></span>
+          <h2>치안시설</h2>
+          <p>파출소, 지구대, 안전센터 등 주요 치안시설과의 접근성을 분석합니다.</p>
+        </article>
+        <article class="zipai-card safety-layer-card">
+          <span class="safety-layer-icon"><i class="fa-solid fa-bell" aria-hidden="true"></i></span>
+          <h2>안전 비상벨</h2>
+          <p>주변 비상벨 분포와 도보 접근성을 점수에 반영합니다.</p>
+        </article>
+        <article class="zipai-card safety-layer-card">
+          <span class="safety-layer-icon"><i class="fa-solid fa-video" aria-hidden="true"></i></span>
+          <h2>CCTV 여부</h2>
+          <p>매물 주변 CCTV 밀도와 사각지대 가능성을 함께 보여줍니다.</p>
+        </article>
+      </section>
+    </main>
+
+    <!-- <footer class="zipai-footer">
+      <div class="zipai-container zipai-footer-inner">
+        <div>
+          <a class="zipai-footer-brand" href="#top" aria-label="ZipAI 홈">
+            <span class="zipai-footer-mark"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+            <span>ZipAI</span>
+          </a>
+          <p>청년 주거 안전을 위한 전세사기 예방 기반 부동산 플랫폼입니다.</p>
+        </div>
+
+        <nav class="zipai-sitemap" aria-label="사이트맵">
+          <div>
+            <div class="zipai-sitemap-title">서비스</div>
+            <a href="#">매물 검색</a>
+            <a href="safety_search.html">안전도 검색</a>
+            <a href="risk.html">위험도 분석</a>
+          </div>
+          <div>
+            <div class="zipai-sitemap-title">안전 정보</div>
+            <a href="risk.html">범죄 주의구간</a>
+            <a href="safety_map.html">치안시설 지도</a>
+            <a href="safety_map.html">비상벨·CCTV</a>
+          </div>
+          <div>
+            <div class="zipai-sitemap-title">고객 지원</div>
+            <a href="#">공지사항</a>
+            <a href="#">문의하기</a>
+            <a href="#">자주 묻는 질문</a>
+          </div>
+          <div>
+            <div class="zipai-sitemap-title">정책</div>
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">위치정보 이용약관</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="zipai-container zipai-copyright">
+        Copyright 2026 ZipAI. All rights reserved.
+      </div>
+    </footer>
+    <a class="top-button" href="#top" aria-label="맨 위로 이동"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a> -->
+  </div>
+</body>
+</html>

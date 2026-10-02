@@ -1,0 +1,6 @@
+package com.zipai.service;
+import com.zipai.repository.*;import java.time.*;import java.util.*;import org.springframework.cache.annotation.*;import org.springframework.scheduling.annotation.Scheduled;import org.springframework.stereotype.Service;
+@Service public class AdminStatisticsService{private final UserRepository users;private final InquiryRepository inquiries;private final PropertyRepository properties;private final VisitRepository visits;public AdminStatisticsService(UserRepository u,InquiryRepository i,PropertyRepository p,VisitRepository v){users=u;inquiries=i;properties=p;visits=v;}
+ @Cacheable("adminDashboard") public Map<String,Long> dashboard(){LocalDateTime today=LocalDate.now().atStartOfDay();return Map.of("newMembers",users.countByCreatedAtGreaterThanEqual(today),"activeMembers",users.countByStatus("active"),"newInquiries",inquiries.countByCreatedAtGreaterThanEqual(today),"unansweredInquiries",inquiries.countByStatusNot("answered"),"pendingProperties",properties.countByStatus("pending"),"pendingVisits",visits.countByStatus("pending"));}
+ @CacheEvict(value="adminDashboard",allEntries=true) @Scheduled(fixedDelayString="${zipai.admin.statistics-refresh-ms:60000}") public void refresh(){}
+}

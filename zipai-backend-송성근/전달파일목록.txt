@@ -1,0 +1,37 @@
+ZipAI 백엔드 전달본
+작성일: 2026-09-09
+
+[backend-files: 52개]
+- .env.example, build.gradle
+- src/main/java/com/zipai/ZipAiApplication.java
+- config: LocalDemoDataInitializer.java
+- domain: AdminAuditLog, CommunityPost, DefenseReport, OAuthIdentity, User, VerificationCode, VisitRequest
+- integration/ocr: ClovaRegistryOcrClient, RegistryOcrClient
+- repository: AdminAuditLog, DefenseReport, Inquiry, OAuthIdentity, Post, Property, User, VerificationCode, Visit Repository
+- scheduler: VisitReminderScheduler
+- service: AdminAudit, AdminStatistics, Auth, DefenseReport, NaverSensSmsSender, RegistryDocumentAnalysis, SocialLogin, Verification Service
+- web: Account, Admin, Auth, Community, DefenseAnalysis, DefenseReport, Inquiry, SocialLogin, Verification, Visit Controller
+- resources: application.yml, application-local-demo.yml, local-demo-schema.sql
+- migration: V2, V3, V4, V5, V6
+- test: DefenseReportApiTest, VisitLifecycleApiTest, test application.yml
+
+[frontend-integration: 25개]
+- CSS 6개
+- JavaScript 11개
+- HTML 템플릿 8개
+
+[local-demo: 4개]
+- ZipAI-Start.bat
+- ZipAI-Stop.bat
+- scripts/start-local-demo.ps1
+- scripts/stop-local-demo.ps1
+
+[docs: 2개]
+- README.md
+- 백엔드.md
+
+[루트 안내 파일: 2개]
+- 병합안내.md
+- 전달파일목록.txt
+
+제외: 실제 .env, API 비밀키, DB 데이터, 로그, build, .gradle, .git, .runtime

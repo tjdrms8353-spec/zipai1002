@@ -1,0 +1,11 @@
+ALTER TABLE visit_requests MODIFY status VARCHAR(30) NOT NULL DEFAULT 'pending';
+ALTER TABLE visit_requests ADD COLUMN decision_reason VARCHAR(500) NOT NULL DEFAULT '';
+ALTER TABLE visit_requests ADD COLUMN admin_note VARCHAR(1000) NOT NULL DEFAULT '';
+ALTER TABLE visit_requests ADD COLUMN user_message VARCHAR(1000) NOT NULL DEFAULT '';
+ALTER TABLE visit_requests ADD COLUMN decided_by BIGINT NULL;
+ALTER TABLE visit_requests ADD COLUMN decided_at DATETIME(6) NULL;
+ALTER TABLE visit_requests ADD COLUMN completed_at DATETIME(6) NULL;
+ALTER TABLE visit_requests ADD COLUMN day_reminder_sent_at DATETIME(6) NULL;
+ALTER TABLE visit_requests ADD COLUMN hour_reminder_sent_at DATETIME(6) NULL;
+ALTER TABLE visit_requests ADD CONSTRAINT fk_visits_decided_by FOREIGN KEY (decided_by) REFERENCES users(id) ON DELETE SET NULL;
+CREATE INDEX idx_visit_status_date ON visit_requests(status, visit_date, visit_time);

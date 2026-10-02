@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html>
+<html lang="ko" id="pageTop">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sub3 입니다</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="static/css/footer.css">
+  <link rel="stylesheet" href="static/css/header.css">
+  <link rel="stylesheet" href="static/css/auth.css">
+  <script src="static/js/auth.js" defer></script>
+</head>
+<body class="has-zipai-footer">
+       <div class="zipai-header" role="banner">
+    <div class="header-utility">
+      <div class="common-container utility-inner">
+        <div class="utility-message">
+          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          <span>안심할 수 있는 부동산 거래, ZipAI가 함께합니다.</span>
+        </div>
+        <div class="utility-links">
+          <a href="#">공지사항</a>
+          <a href="templates/board/customer-center.html">고객센터</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="common-container header-inner">
+        <a class="header-logo" href="index.html" aria-label="ZipAI 홈으로 이동">
+          <span class="header-logo-mark" aria-hidden="true"><i class="fa-solid fa-house"></i></span>
+          <span class="header-logo-copy"><strong>ZipAI</strong><small>집을 아는 가장 쉬운 방법</small></span>
+        </a>
+
+        <button class="mobile-menu-button" type="button" aria-label="전체 메뉴 열기" aria-expanded="false" aria-controls="primaryMenu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <div class="header-menu" id="primaryMenu" role="navigation" aria-label="주요 메뉴">
+          <div class="menu-links">
+            <a href="index.html">매물 찾기</a>
+            <a href="templates/defense/fraud_result.html">사기방지</a>
+            <a href="templates/safe/safety.html">위험안전도</a>
+            <a href="templates/board/trend1.html">금융지원정책</a>
+            <a href="templates/board/happy-housing.html">행복주택</a>
+            <a href="templates/ai/lifestyle-analysis.html">방 구하기·내놓기</a>
+          </div>
+          <div class="header-actions">
+            <button class="icon-button" type="button" aria-label="검색">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+            <a class="login-button" href="templates/member/login.html">
+              <i class="fa-solid fa-user" aria-hidden="true"></i>
+              로그인
+            </a>
+            <a class="listing-button" href="#">
+              <i class="fa-solid fa-house-circle-check" aria-hidden="true"></i>
+              매물 등록
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const menuButton = document.querySelector('.mobile-menu-button');
+    const headerMenu = document.querySelector('.header-menu');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = headerMenu.classList.toggle('is-open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? '전체 메뉴 닫기' : '전체 메뉴 열기');
+      menuButton.querySelector('i').className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    });
+  </script>
+    <h1>서브3 생성 완료</h1>
+  <footer class="zipai-footer" aria-labelledby="footerHeading">
+    <h2 class="visually-hidden" id="footerHeading">집아이 사이트 정보</h2>
+
+    <div class="footer-cta" aria-label="집아이 주요 서비스">
+      <div class="common-container footer-cta-inner">
+        <div class="cta-copy">
+          <span class="cta-icon" aria-hidden="true"><i class="fa-solid fa-house-shield"></i></span>
+          <div>
+            <p>HOME SEARCH, MADE SAFE</p>
+            <h3>좋은 집을 찾는 순간부터 계약까지, `집아이`가 함께해요.</h3>
+          </div>
+        </div>
+        <div class="cta-actions">
+          <a class="footer-button footer-button-light" href="index.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> 지도에서 매물 찾기</a>
+          <a class="footer-button footer-button-outline" href="templates/defense/fraud_result.html"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> 계약 안전 진단</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-main">
+      <div class="common-container footer-grid">
+        <div class="footer-brand-column" aria-label="집아이 소개">
+          <a class="footer-logo" href="index.html" aria-label="집아이 홈">
+            <span class="footer-logo-mark" aria-hidden="true"><i class="fa-solid fa-house"></i></span>
+            <span><strong>ZipAI</strong><small>집아이</small></span>
+          </a>
+          <p class="brand-message">데이터로 찾고, 안전하게 계약하는<br>생활밀착형 부동산 플랫폼</p>
+
+          <div class="customer-center">
+            <p><i class="fa-solid fa-headset" aria-hidden="true"></i> 고객센터</p>
+            <strong>평일 09:00–18:00</strong>
+            <span>주말·공휴일 휴무</span>
+          </div>
+
+          <div class="social-links" aria-label="집아이 소셜미디어">
+            <a href="#" aria-label="집아이 네이버 블로그"><i class="fa-solid fa-blog" aria-hidden="true"></i></a>
+            <a href="#" aria-label="집아이 인스타그램"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="집아이 유튜브"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="#" aria-label="집아이 카카오톡 채널"><i class="fa-solid fa-comment" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-sitemap" aria-label="사이트맵">
+          <div>
+            <h3>고객센터</h3>
+            <ul>
+              <li><a href="templates/board/customer-center.html#inquiry">1:1 문의하기</a></li>
+              <li><a href="templates/board/customer-center.html#inquiry-history">나의 문의내역</a></li>
+              <li><a href="templates/board/customer-center.html#faq">자주 묻는 질문</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>매물 서비스</h3>
+            <ul>
+              <li><a href="index.html">지도에서 집 찾기</a></li>
+              <li><a href="index.html">안심 매물</a></li>
+              <li><a href="#">관심 매물</a></li>
+              <li><a href="#">매물 등록 문의</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>계약 안전</h3>
+            <ul>
+              <li><a href="templates/defense/fraud_result.html">안전 진단 결과</a></li>
+              <li><a href="templates/defense/checklist.html">계약 체크리스트</a></li>
+              <li><a href="templates/defense/charter-rate-calculator.html">전세가율 계산기</a></li>
+              <li><a href="templates/defense/contract-guide.html">안전 계약가이드</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>집아이 안내</h3>
+            <ul>
+              <li><a href="#">서비스 소개</a></li>
+              <li><a href="#">공지사항</a></li>
+              <li><a href="templates/board/customer-center.html#faq">자주 묻는 질문</a></li>
+              <li><a href="#">제휴·광고 문의</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-family" aria-labelledby="familyHeading">
+          <p class="family-eyebrow">OFFICIAL LINKS</p>
+          <h3 id="familyHeading">부동산 패밀리사이트</h3>
+          <p>계약 전 필요한 공공 서비스를<br>집아이에서 바로 확인하세요.</p>
+
+          <details class="family-dropdown">
+            <summary>패밀리사이트 선택 <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+            <ul>
+              <li><a href="https://rt.molit.go.kr/" target="_blank" rel="noopener noreferrer">국토교통부 실거래가 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.iros.go.kr/" target="_blank" rel="noopener noreferrer">대한민국 법원 인터넷등기소 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.khug.or.kr/jeonse/" target="_blank" rel="noopener noreferrer">HUG 안심전세포털 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></li>
+              <li><a href="https://apply.lh.or.kr/" target="_blank" rel="noopener noreferrer">LH 청약플러스 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.myhome.go.kr/" target="_blank" rel="noopener noreferrer">마이홈포털 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></li>
+            </ul>
+          </details>
+
+          <a class="safety-shortcut" href="templates/defense/checklist.html">
+            <span><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i></span>
+            <div><strong>계약 전 5분 안전점검</strong><small>체크리스트 시작하기</small></div>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-company">
+      <div class="common-container company-inner">
+        <div class="company-info">
+          <p><strong>집아이</strong><span>대표자 [대표자명]</span><span>사업자등록번호 [000-00-00000]</span><span>통신판매업신고 [신고번호]</span></p>
+          <address>주소 [집아이 사업장 주소] <span>이메일 help@zipai.kr</span></address>
+          <p class="company-notice">집아이는 통신판매중개자이며, 매물 정보의 정확성은 등록 주체에게 있습니다. 계약 전 등기사항과 권리관계를 반드시 직접 확인하세요.</p>
+        </div>
+        <div class="policy-links">
+          <a href="#">이용약관</a>
+          <a class="important" href="#">개인정보처리방침</a>
+          <a href="#">위치기반서비스 이용약관</a>
+        </div>
+      </div>
+      <div class="common-container copyright-row">
+        <p>© 2026 ZIPAI REAL ESTATE. All rights reserved.</p>
+        <span>Find well. Live safe.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="to-top-button" href="#pageTop" aria-label="페이지 맨 위로 이동">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i><span>TOP</span>
+  </a>
+</body>
+</html>

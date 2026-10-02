@@ -1,0 +1,15 @@
+.git
+.gradle
+.agents
+.codex
+.vscode
+backend
+bin
+build
+data
+docs
+node_modules
+ppt
+scripts
+.env
+*.log

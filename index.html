@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ko" id="pageTop">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="지도에서 안전한 집을 찾는 집도소 매물 홈">
+  <title>집아이 | 안전한 집 찾기의 시작</title>
+  <link rel="stylesheet" href="static/css/property.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="static/css/footer.css">
+  <link rel="stylesheet" href="static/css/header.css">
+  <link rel="stylesheet" href="static/css/auth.css">
+  <script src="static/js/auth.js" defer></script>
+</head>
+<body class="has-zipai-footer">
+       <div class="zipai-header" role="banner">
+    <div class="header-utility">
+      <div class="common-container utility-inner">
+        <div class="utility-message">
+          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          <span>안심할 수 있는 부동산 거래, ZipAI가 함께합니다.</span>
+        </div>
+        <div class="utility-links">
+          <a href="#">공지사항</a>
+          <a href="templates/board/customer-center.html">고객센터</a>
+          <a class="utility-signup-button" href="templates/member/signup.html">회원가입</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="common-container header-inner">
+        <a class="header-logo" href="index.html" aria-label="ZipAI 홈으로 이동">
+          <span class="header-logo-mark" aria-hidden="true"><i class="fa-solid fa-house"></i></span>
+          <span class="header-logo-copy"><strong>ZipAI</strong><small>집을 아는 가장 쉬운 방법</small></span>
+        </a>
+
+        <button class="mobile-menu-button" type="button" aria-label="전체 메뉴 열기" aria-expanded="false" aria-controls="primaryMenu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <div class="header-menu" id="primaryMenu" role="navigation" aria-label="주요 메뉴">
+          <div class="menu-links">
+            <a href="index.html">매물 찾기</a>
+            <a href="templates/defense/fraud_result.html">사기방지</a>
+            <a href="templates/safe/safety.html">위험안전도</a>
+            <a href="templates/board/trend1.html">금융지원정책</a>
+            <a href="templates/board/happy-housing.html">행복주택</a>
+            <a href="templates/ai/lifestyle-analysis.html">방 구하기·내놓기</a>
+          </div>
+          <div class="header-actions">
+            <button class="icon-button" type="button" aria-label="검색">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            </button>
+            <a class="login-button" href="templates/member/login.html">
+              <i class="fa-solid fa-user" aria-hidden="true"></i>
+              로그인
+            </a>
+            <a class="listing-button" href="#register-listing" id="openListingRegistration">
+              <i class="fa-solid fa-house-circle-check" aria-hidden="true"></i>
+              매물 등록
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const menuButton = document.querySelector('.mobile-menu-button');
+    const headerMenu = document.querySelector('.header-menu');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = headerMenu.classList.toggle('is-open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? '전체 메뉴 닫기' : '전체 메뉴 열기');
+      menuButton.querySelector('i').className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    });
+  </script>
+
+  <nav class="property-category-bar" aria-label="매물 카테고리">
+    <div class="property-category-inner">
+      <button type="button" class="property-category active" data-property-category="general" aria-pressed="true">
+        <span class="category-icon"><i class="fa-solid fa-house"></i></span>
+        <span><strong>일반 전·월세</strong><small>중개사·임대인 등록 매물</small></span>
+      </button>
+      <button type="button" class="property-category" data-property-category="public" aria-pressed="false">
+        <span class="category-icon public"><i class="fa-solid fa-building-circle-check"></i></span>
+        <span><strong>LH·공공임대</strong><small>공식 모집공고</small></span>
+      </button>
+      <p class="category-scope"><i class="fa-solid fa-location-dot"></i> 경기도 지역만 제공</p>
+    </div>
+  </nav>
+
+  <section class="search-toolbar" aria-label="매물 검색 및 필터">
+    <form class="location-search" id="locationSearch">
+      <span class="search-icon" aria-hidden="true"></span>
+      <input id="searchInput" type="search" autocomplete="off" placeholder="지역, 지하철역, 학교를 검색해 보세요" aria-label="지역 검색">
+      <button type="submit">검색</button>
+    </form>
+    <div class="quick-filters" id="dealFilters">
+      <button type="button" class="filter-chip active" data-deal="all">전체</button>
+      <button type="button" class="filter-chip" data-deal="monthly">월세</button>
+      <button type="button" class="filter-chip" data-deal="jeonse">전세</button>
+      <label class="select-chip"><span>방 유형</span><select id="roomFilter" aria-label="방 유형"><option value="all">전체</option><option value="원룸">원룸</option><option value="1.5룸">1.5룸</option><option value="투룸">투룸</option><option value="쓰리룸">쓰리룸</option></select></label>
+      <button type="button" class="filter-chip filter-more" id="openFilterButton"><span class="sliders-icon" aria-hidden="true"></span>상세 필터 <b id="activeFilterCount" hidden>0</b></button>
+      <button type="button" class="filter-chip saved-homes-filter" id="savedHomesButton" aria-pressed="false"><span aria-hidden="true">♥</span> 찜한 매물 <b id="favoriteCount">0</b></button>
+        <a class="filter-chip" href="templates/ai/lifestyle-analysis.html"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i>&nbsp; 방문 예약</a>
+    </div>
+  </section>
+
+  <main class="property-app">
+    <aside class="listing-panel" id="listingPanel">
+      <div class="listing-heading">
+        <div><p id="locationLabel">경기도 전체</p><h1><strong id="listingCount">0</strong><span id="listingUnit">개의 방을 찾았어요</span></h1></div>
+        <label class="sort-select"><span class="sr-only">정렬</span><select id="sortSelect"><option value="recommended">추천순</option><option value="lowMonthly">월세 낮은순</option><option value="lowDeposit">보증금 낮은순</option><option value="largeArea">넓은 면적순</option><option value="safe">안전점수 높은순</option></select></label>
+      </div>
+      <div class="listing-notice" id="listingNotice"><span>✓</span><p><strong>등록 매물</strong>의 출처와 최종 확인일을 꼭 확인하세요.</p><a href="templates/defense/fraud_result.html">안전 확인</a></div>
+      <div class="property-list" id="propertyList" aria-live="polite"></div>
+      <div class="list-loading" id="listLoading" hidden><i></i><span>매물을 찾고 있어요</span></div>
+    </aside>
+
+    <section class="map-panel" id="mapPanel" aria-label="매물 지도">
+      <div class="map-canvas" id="mapCanvas">
+        <div class="real-map" id="realMap" role="application" aria-label="실제 매물 지도"></div>
+      </div>
+
+      <button class="map-search-button" id="searchThisArea" type="button"><span>↻</span> 현 지도에서 검색</button>
+      <div class="map-mode-control" role="group" aria-label="지도 유형"><button type="button" class="active" data-map-mode="normal">지도</button><button type="button" data-map-mode="district">동네</button><button type="button" data-map-mode="safe">안전도</button></div>
+      <div class="map-zoom-control"><button type="button" id="zoomIn" aria-label="지도 확대">＋</button><button type="button" id="zoomOut" aria-label="지도 축소">−</button></div>
+      <button type="button" class="my-location-button" id="myLocation" aria-label="내 위치로 이동"><span></span></button>
+      <a class="safety-floating-card" href="templates/defense/fraud_result.html"><span class="safety-shield">✓</span><div><strong>이 집, 계약해도 괜찮을까?</strong><small>체크리스트로 안전 진단하기 →</small></div></a>
+
+      <aside class="property-detail" id="propertyDetail" aria-hidden="true">
+        <button type="button" class="detail-close" id="detailClose" aria-label="상세 닫기">×</button>
+        <div id="detailContent"></div>
+      </aside>
+    </section>
+  </main>
+
+  <div class="mobile-view-switch" role="group" aria-label="보기 방식"><button type="button" class="active" data-view="list"><span>☷</span> 목록</button><button type="button" data-view="map"><span>⌖</span> 지도</button></div>
+
+  <div class="sheet-backdrop" id="filterSheet" aria-hidden="true">
+    <section class="filter-sheet" role="dialog" aria-modal="true" aria-labelledby="filterTitle">
+      <header><h2 id="filterTitle">상세 필터</h2><button type="button" class="sheet-close" aria-label="닫기">×</button></header>
+      <div class="filter-sheet-body">
+        <fieldset><legend>월세 한도</legend><div class="range-value"><strong id="monthlyValue">제한 없음</strong></div><input type="range" id="monthlyRange" min="30" max="150" step="10" value="150"><div class="range-labels"><span>30만원</span><span>150만원 이상</span></div></fieldset>
+        <fieldset><legend>보증금 한도</legend><div class="range-value"><strong id="depositValue">제한 없음</strong></div><input type="range" id="depositRange" min="500" max="30000" step="500" value="30000"><div class="range-labels"><span>500만원</span><span>3억원 이상</span></div></fieldset>
+        <fieldset><legend>필수 옵션</legend><div class="option-checks"><label><input type="checkbox" id="parkingFilter"><span>주차 가능</span></label><label><input type="checkbox" id="elevatorFilter"><span>엘리베이터</span></label><label><input type="checkbox" id="petFilter"><span>반려동물</span></label><label><input type="checkbox" id="safeFilter"><span>안심 매물만</span></label></div></fieldset>
+      </div>
+      <footer><button type="button" class="reset-filter" id="resetFilters">초기화</button><button type="button" class="apply-filter" id="applyFilters"><span id="sheetResultCount">0</span>개 매물 보기</button></footer>
+    </section>
+  </div>
+
+  <div class="sheet-backdrop" id="inquiryModal" aria-hidden="true">
+    <section class="inquiry-modal" role="dialog" aria-modal="true" aria-labelledby="inquiryTitle">
+      <button type="button" class="sheet-close inquiry-close" aria-label="닫기">×</button><span class="inquiry-icon">집</span><h2 id="inquiryTitle">방문 상담을 신청할까요?</h2><p id="inquiryPropertyName">선택한 매물</p><label>연락받을 휴대폰 번호<input type="tel" id="phoneInput" placeholder="010-0000-0000" maxlength="13"></label><small>데모 화면으로 실제 상담이 접수되지는 않습니다.</small><button type="button" class="apply-filter" id="submitInquiry">상담 신청하기</button>
+    </section>
+  </div>
+
+  <div class="sheet-backdrop" id="listingRegistrationModal" aria-hidden="true">
+    <section class="listing-registration-modal" role="dialog" aria-modal="true" aria-labelledby="listingRegistrationTitle">
+      <header>
+        <div><small>경기도 매물만 등록할 수 있어요</small><h2 id="listingRegistrationTitle">일반 전·월세 매물 등록</h2></div>
+        <button type="button" class="sheet-close registration-close" aria-label="닫기">×</button>
+      </header>
+      <form id="listingRegistrationForm">
+        <div class="registration-grid">
+          <label class="wide">매물 제목<input name="title" required maxlength="60" placeholder="예: 수원역 도보 5분 원룸"></label>
+          <label>시·군
+            <select name="city" required>
+              <option value="">선택</option><option>수원시</option><option>성남시</option><option>고양시</option><option>용인시</option>
+              <option>부천시</option><option>안산시</option><option>안양시</option><option>화성시</option><option>평택시</option>
+              <option>의정부시</option><option>파주시</option><option>김포시</option><option>광명시</option><option>광주시</option>
+              <option>군포시</option><option>하남시</option><option>오산시</option><option>이천시</option><option>안성시</option>
+              <option>의왕시</option><option>양주시</option><option>구리시</option><option>포천시</option><option>동두천시</option>
+              <option>과천시</option><option>여주시</option><option>남양주시</option><option>시흥시</option><option>가평군</option>
+              <option>양평군</option><option>연천군</option>
+            </select>
+          </label>
+          <label>상세 지역<input name="neighborhood" required maxlength="40" placeholder="영통구 매탄동"></label>
+          <label>거래 유형<select name="deal" required><option value="monthly">월세</option><option value="jeonse">전세</option></select></label>
+          <label>방 유형<select name="room" required><option>원룸</option><option>1.5룸</option><option>투룸</option><option>쓰리룸</option></select></label>
+          <label>보증금(만원)<input name="deposit" type="number" required min="0" step="100"></label>
+          <label>월세(만원)<input name="monthly" type="number" min="0" step="1" value="0"></label>
+          <label>전용면적(㎡)<input name="area" type="number" required min="5" step="0.1"></label>
+          <label>층<input name="floor" required maxlength="10" placeholder="3층"></label>
+          <label class="wide">연락처<input name="contact" required maxlength="13" placeholder="010-0000-0000"></label>
+        </div>
+        <p class="registration-help"><i class="fa-solid fa-circle-info"></i> 로컬 시연 버전에서는 선택한 시·군의 대표 위치에 표시됩니다. 운영 시 주소 좌표 변환과 중개사 검증을 서버에서 처리해야 합니다.</p>
+        <button type="submit" class="registration-submit">경기도 매물 등록하기</button>
+      </form>
+    </section>
+  </div>
+
+  <div class="home-toast" id="homeToast" role="status" aria-live="polite"></div>
+  <footer class="zipai-footer" aria-labelledby="footerHeading">
+    <h2 class="visually-hidden" id="footerHeading">집아이 사이트 정보</h2>
+
+    <div class="footer-cta" aria-label="집아이 주요 서비스">
+      <div class="common-container footer-cta-inner">
+        <div class="cta-copy">
+          <span class="cta-icon" aria-hidden="true"><i class="fa-solid fa-house-shield"></i></span>
+          <div>
+            <p>HOME SEARCH, MADE SAFE</p>
+            <h3>좋은 집을 찾는 순간부터 계약까지, `집아이`가 함께해요.</h3>
+          </div>
+        </div>
+        <div class="cta-actions">
+          <a class="footer-button footer-button-light" href="index.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> 지도에서 매물 찾기</a>
+          <a class="footer-button footer-button-outline" href="templates/defense/fraud_result.html"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> 계약 안전 진단</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-main">
+      <div class="common-container footer-grid">
+        <div class="footer-brand-column" aria-label="집아이 소개">
+          <a class="footer-logo" href="index.html" aria-label="집아이 홈">
+            <span class="footer-logo-mark" aria-hidden="true"><i class="fa-solid fa-house"></i></span>
+            <span><strong>ZipAI</strong><small>집아이</small></span>
+          </a>
+          <p class="brand-message">데이터로 찾고, 안전하게 계약하는<br>생활밀착형 부동산 플랫폼</p>
+
+          <div class="customer-center">
+            <p><i class="fa-solid fa-headset" aria-hidden="true"></i> 고객센터</p>
+            <strong>평일 09:00–18:00</strong>
+            <span>주말·공휴일 휴무</span>
+          </div>
+
+          <div class="social-links" aria-label="집아이 소셜미디어">
+            <a href="#" aria-label="집아이 네이버 블로그"><i class="fa-solid fa-blog" aria-hidden="true"></i></a>
+            <a href="#" aria-label="집아이 인스타그램"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="집아이 유튜브"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="#" aria-label="집아이 카카오톡 채널"><i class="fa-solid fa-comment" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-sitemap" aria-label="사이트맵">
+          <div>
+            <h3>고객센터</h3>
+            <ul>
+              <li><a href="templates/board/customer-center.html#inquiry">1:1 문의하기</a></li>
+              <li><a href="templates/board/customer-center.html#inquiry-history">나의 문의내역</a></li>
+              <li><a href="templates/board/customer-center.html#faq">자주 묻는 질문</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>매물 서비스</h3>
+            <ul>
+              <li><a href="index.html">지도에서 집 찾기</a></li>
+              <li><a href="index.html">안심 매물</a></li>
+              <li><a href="#">관심 매물</a></li>
+              <li><a href="#">매물 등록 문의</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>계약 안전</h3>
+            <ul>
+              <li><a href="templates/defense/fraud_result.html">안전 진단 결과</a></li>
+              <li><a href="templates/defense/checklist.html">계약 체크리스트</a></li>
+              <li><a href="templates/defense/charter-rate-calculator.html">전세가율 계산기</a></li>
+              <li><a href="templates/defense/contract-guide.html">안전 계약가이드</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>집아이 안내</h3>
+            <ul>
+              <li><a href="#">서비스 소개</a></li>
+              <li><a href="#">공지사항</a></li>
+              <li><a href="templates/board/customer-center.html#faq">자주 묻는 질문</a></li>
+              <li><a href="#">제휴·광고 문의</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-family" aria-labelledby="familyHeading">
+          <p class="family-eyebrow">OFFICIAL LINKS</p>
+          <h3 id="familyHeading">부동산 패밀리사이트</h3>
+          <p>계약 전 필요한 공공 서비스를<br>집아이에서 바로 확인하세요.</p>
+
+          <details class="family-dropdown">
+            <summary>패밀리사이트 선택 <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+            <ul>
+              <li><a href="https://rt.molit.go.kr/" target="_blank" rel="noopener noreferrer">국토교통부 실거래가 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.iros.go.kr/" target="_blank" rel="noopener noreferrer">대한민국 법원 인터넷등기소 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.khug.or.kr/jeonse/" target="_blank" rel="noopener noreferrer">HUG 안심전세포털 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></li>
+              <li><a href="https://apply.lh.or.kr/" target="_blank" rel="noopener noreferrer">LH 청약플러스 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.myhome.go.kr/" target="_blank" rel="noopener noreferrer">마이홈포털 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></li>
+            </ul>
+          </details>
+
+          <a class="safety-shortcut" href="templates/defense/checklist.html">
+            <span><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i></span>
+            <div><strong>계약 전 5분 안전점검</strong><small>체크리스트 시작하기</small></div>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-company">
+      <div class="common-container company-inner">
+        <div class="company-info">
+          <p><strong>집아이</strong><span>대표자 [대표자명]</span><span>사업자등록번호 [000-00-00000]</span><span>통신판매업신고 [신고번호]</span></p>
+          <address>주소 [집아이 사업장 주소] <span>이메일 help@zipai.kr</span></address>
+          <p class="company-notice">집아이는 통신판매중개자이며, 매물 정보의 정확성은 등록 주체에게 있습니다. 계약 전 등기사항과 권리관계를 반드시 직접 확인하세요.</p>
+        </div>
+        <div class="policy-links">
+          <a href="#">이용약관</a>
+          <a class="important" href="#">개인정보처리방침</a>
+          <a href="#">위치기반서비스 이용약관</a>
+        </div>
+      </div>
+      <div class="common-container copyright-row">
+        <p>© 2026 ZIPAI REAL ESTATE. All rights reserved.</p>
+        <span>Find well. Live safe.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="static/js/map-config.js"></script>
+  <script src="static/js/naver-map-adapter.js"></script>
+  <script src="static/js/naver-map-loader.js"></script>
+</body>
+</html>

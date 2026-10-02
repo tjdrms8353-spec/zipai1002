@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ZipAI 안전도 검색 페이지">
+  <title>ZipAI | 안전도 검색</title>
+  <link rel="icon" type="image/svg+xml" href="../static/images/favicon.svg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../static/css/common.css">
+  <link rel="stylesheet" href="../../static/css/header.css">
+  <link rel="stylesheet" href="../../static/css/footer.css">
+  <link rel="stylesheet" href="../../static/css/safe.css">
+</head>
+<body>
+  <div id="top" class="zipai-page">
+    <!-- <header class="zipai-header">
+      <nav class="zipai-container zipai-nav" aria-label="ZipAI 주요 메뉴">
+        <a class="zipai-brand" href="#top" aria-label="ZipAI 홈">
+          <span class="zipai-brand-mark"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+          <span>ZipAI</span>
+        </a>
+
+        <ul class="zipai-menu">
+          <li><a href="#"><i class="fa-solid fa-house" aria-hidden="true"></i> 매물</a></li>
+          <li><a class="is-active" href="safety_search.html"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> 안전도</a></li>
+          <li><a href="#"><i class="fa-solid fa-file-signature" aria-hidden="true"></i> 전세사기 예방</a></li>
+          <li><a href="#"><i class="fa-solid fa-star" aria-hidden="true"></i> 관심매물</a></li>
+        </ul>
+
+        <div class="zipai-header-actions">
+          <a class="zipai-btn zipai-btn-primary" href="#safety-search">
+            <i class="fa-solid fa-magnifying-glass-location" aria-hidden="true"></i>
+            안전도 검색
+          </a>
+          <button class="zipai-mobile-toggle" type="button" aria-label="모바일 메뉴">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+      </nav>
+    </header> -->
+
+    <main>
+      <section class="safety-hero">
+        <div class="zipai-container safety-hero-grid">
+          <div>
+            <span class="safety-eyebrow"><i class="fa-solid fa-location-crosshairs" aria-hidden="true"></i> ZipAI 안전도</span>
+            <h1>거주 전 안전도를 지도에서 바로 확인하세요</h1>
+            <p>지역안전, 범죄 주의구간, 여성 밤길 치안안전, 치안시설, 안전 비상벨, CCTV 데이터를 종합해 청년 주거 안전점수를 제공합니다.</p>
+
+            <div class="safety-summary" aria-label="안전도 요약">
+              <div class="safety-summary-item">
+                <strong>87</strong>
+                <span>예상 안전점수</span>
+              </div>
+              <div class="safety-summary-item">
+                <strong>42</strong>
+                <span>반경 내 치안시설</span>
+              </div>
+              <div class="safety-summary-item">
+                <strong>16</strong>
+                <span>비상벨·CCTV</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="zipai-card safety-preview" aria-label="안전도 지도 미리보기">
+            <div class="safety-preview-panel">
+              <div>
+                <strong>서울시 마포구 연남동</strong>
+                <span>치안시설 접근성 우수, 야간 보행 안전 양호</span>
+              </div>
+              <div class="safety-preview-score">87</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="zipai-container" id="safety-search">
+        <aside class="zipai-card safety-control-panel" aria-label="안전도 검색 조건">
+          <div class="safety-panel-head">
+            <h2>안전도 검색</h2>
+            <span><i class="fa-solid fa-circle-check" aria-hidden="true"></i> 실시간 분석</span>
+          </div>
+
+          <form class="safety-search-form" action="#" method="get">
+            <div class="safety-field">
+              <label for="safety-keyword">지역 또는 매물명</label>
+              <div class="safety-input-wrap">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input id="safety-keyword" name="keyword" type="search" value="서울시 마포구 연남동" placeholder="지역, 지하철역, 매물명 검색">
+              </div>
+            </div>
+
+            <div class="row g-2">
+              <div class="col-12 col-sm-6">
+                <div class="safety-field">
+                  <label for="safety-type">거주 유형</label>
+                  <select id="safety-type" name="type">
+                    <option>전세</option>
+                    <option>월세</option>
+                    <option>반전세</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="safety-field">
+                  <label for="safety-radius">분석 반경</label>
+                  <select id="safety-radius" name="radius">
+                    <option>500m</option>
+                    <option>1km</option>
+                    <option>1.5km</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="safety-filter-grid" aria-label="안전도 분석 항목">
+              <label class="safety-check"><input type="checkbox" checked> 지역안전</label>
+              <label class="safety-check"><input type="checkbox" checked> 범죄 주의구간</label>
+              <label class="safety-check"><input type="checkbox" checked> 여성 밤길</label>
+              <label class="safety-check"><input type="checkbox" checked> 치안시설</label>
+              <label class="safety-check"><input type="checkbox" checked> 안전 비상벨</label>
+              <label class="safety-check"><input type="checkbox" checked> CCTV 여부</label>
+            </div>
+
+            <div class="safety-control-actions">
+              <button class="zipai-btn zipai-btn-primary" type="submit">
+                <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                분석하기
+              </button>
+              <button class="zipai-btn zipai-btn-muted" type="reset">
+                <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+                초기화
+              </button>
+            </div>
+          </form>
+        </aside>
+      </section>
+    </main>
+
+    <!-- <footer class="zipai-footer">
+      <div class="zipai-container zipai-footer-inner">
+        <div>
+          <a class="zipai-footer-brand" href="#top" aria-label="ZipAI 홈">
+            <span class="zipai-footer-mark"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span>
+            <span>ZipAI</span>
+          </a>
+          <p>청년 주거 안전을 위한 전세사기 예방 기반 부동산 플랫폼입니다.</p>
+        </div>
+
+        <nav class="zipai-sitemap" aria-label="사이트맵">
+          <div>
+            <div class="zipai-sitemap-title">서비스</div>
+            <a href="#">매물 검색</a>
+            <a href="safety_search.html">안전도 검색</a>
+            <a href="risk.html">위험도 분석</a>
+          </div>
+          <div>
+            <div class="zipai-sitemap-title">안전 정보</div>
+            <a href="risk.html">범죄 주의구간</a>
+            <a href="safety_map.html">치안시설 지도</a>
+            <a href="safety_map.html">비상벨·CCTV</a>
+          </div>
+          <div>
+            <div class="zipai-sitemap-title">고객 지원</div>
+            <a href="#">공지사항</a>
+            <a href="#">문의하기</a>
+            <a href="#">자주 묻는 질문</a>
+          </div>
+          <div>
+            <div class="zipai-sitemap-title">정책</div>
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">위치정보 이용약관</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="zipai-container zipai-copyright">
+        Copyright 2026 ZipAI. All rights reserved.
+      </div>
+    </footer>
+    <a class="top-button" href="#top" aria-label="맨 위로 이동"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a> -->
+  </div>
+</body>
+</html>
